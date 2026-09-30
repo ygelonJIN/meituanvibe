@@ -5,7 +5,7 @@ const HTML = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>周末城市探索指南 | v3.0</title>
+<title>周末城市探索指南 | Weekend Explorer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
 :root {
@@ -103,7 +103,7 @@ body {
   min-height: 100vh;
 }
 .page { display: none; }
-.page.active { display: block; animation: fadeIn 0.2s ease; position: relative; top: 0; }
+.page.active { display: block; animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
 /* ===== HOME PAGE ===== */
@@ -193,7 +193,6 @@ body {
   scroll-snap-type: x mandatory;
 }
 .card-scroll::-webkit-scrollbar { display: none; }
-  .card-scroll .loading-recommendations { width: 100%; flex-shrink: 0; }
 .activity-card {
   min-width: 280px; max-width: 280px;
   background: var(--card);
@@ -613,87 +612,6 @@ body {
   border-radius: 8px;
 }
 @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-
-/* ===== RECOMMENDATION SYSTEM ===== */
-.recommend-page{padding:0}
-.recommend-hero{background:linear-gradient(135deg,#6C5CE7 0%,#A29BFE 50%,#FF6B6B 100%);border-radius:var(--radius);padding:24px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden}
-.recommend-hero::after{content:'';position:absolute;top:-30%;right:-10%;width:150px;height:150px;background:rgba(255,255,255,0.1);border-radius:50%}
-.recommend-hero-title{font-size:22px;font-weight:800;margin-bottom:8px}
-.recommend-hero-subtitle{font-size:14px;opacity:0.9;margin-bottom:16px}
-.weather-card{background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);border-radius:12px;padding:12px 16px;display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500}
-.weather-temp{font-size:24px;font-weight:700}
-.task-card{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.task-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#6C5CE7,#FF6B6B)}
-.task-label{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#6C5CE7,#A29BFE);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:12px}
-.task-emoji{font-size:48px;text-align:center;margin-bottom:12px}
-.task-text{font-size:18px;font-weight:700;text-align:center;margin-bottom:8px;line-height:1.4}
-.task-difficulty{text-align:center;font-size:13px;color:var(--text-light);margin-bottom:16px}
-.task-actions{display:flex;gap:10px}
-.task-btn{flex:1;padding:12px;border-radius:12px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s}
-.task-btn-primary{background:linear-gradient(135deg,#6C5CE7,#A29BFE);color:#fff}
-.task-btn-primary:active{transform:scale(0.98)}
-.task-btn-secondary{background:var(--bg);color:var(--text)}
-.task-btn-secondary:active{transform:scale(0.98)}
-.prefs-section{margin-bottom:20px}
-.prefs-title{font-size:16px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.prefs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.pref-card{background:var(--card);border-radius:var(--radius-sm);padding:14px;text-align:center;cursor:pointer;transition:all 0.2s;border:2px solid transparent;box-shadow:var(--shadow)}
-.pref-card.active{border-color:var(--primary);background:rgba(108,92,231,0.05)}
-.pref-card:active{transform:scale(0.98)}
-.pref-emoji{font-size:28px;margin-bottom:6px}
-.pref-label{font-size:13px;font-weight:600;color:var(--text)}
-.pref-desc{font-size:11px;color:var(--text-muted);margin-top:4px}
-.energy-slider{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:20px;box-shadow:var(--shadow)}
-.energy-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.energy-title{font-size:16px;font-weight:700}
-.energy-value{font-size:24px}
-.energy-range{width:100%;height:8px;-webkit-appearance:none;appearance:none;background:linear-gradient(90deg,#00B894,#FDCB6E,#E17055);border-radius:4px;outline:none;margin-bottom:12px}
-.energy-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2);cursor:pointer}
-.energy-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted)}
-.recommendations-section{margin-top:20px}
-.recommendations-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.recommendations-title{font-size:18px;font-weight:700}
-.recommendations-count{font-size:13px;color:var(--text-muted)}
-.recommend-card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow);display:flex;gap:14px;cursor:pointer;transition:all 0.2s}
-.recommend-card:active{transform:scale(0.98)}
-.recommend-emoji{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
-.recommend-info{flex:1;min-width:0}
-.recommend-title{font-size:15px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.recommend-meta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-light);margin-bottom:6px}
-.recommend-reason{display:inline-flex;align-items:center;gap:4px;background:rgba(108,92,231,0.1);color:var(--primary);padding:3px 8px;border-radius:6px;font-size:11px;font-weight:500}
-.recommend-score{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--success);font-weight:600}
-.empty-recommendations{text-align:center;padding:40px 20px}
-.empty-emoji{font-size:64px;margin-bottom:16px}
-.empty-text{font-size:16px;font-weight:600;margin-bottom:8px}
-.empty-subtext{font-size:13px;color:var(--text-muted);line-height:1.5}
-.loading-recommendations{text-align:center;padding:40px 20px}
-.loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-size:14px;color:var(--text-muted)}
-
-
-/* ===== TASK MODAL ===== */
-.task-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
-.task-modal-overlay.show{display:flex}
-.task-modal{background:var(--card);border-radius:20px;padding:28px 24px;max-width:360px;width:100%;text-align:center;position:relative;animation:modalPop 0.3s ease}
-@keyframes modalPop{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
-.task-modal-close{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:var(--text-muted);background:none;border:none;line-height:1}
-.recommend-prefs-bar{display:flex;gap:8px;padding:12px 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.recommend-prefs-bar::-webkit-scrollbar{display:none}
-.pref-chip{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;border-radius:20px;background:var(--card);border:1.5px solid var(--border);font-size:13px;font-weight:500;white-space:nowrap;cursor:pointer;transition:all 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-.pref-chip.active{border-color:var(--primary);background:rgba(108,92,231,0.08);color:var(--primary)}
-.pref-chip:active{transform:scale(0.96)}
-.pref-chip-emoji{font-size:16px}
-.prefs-compact{background:var(--card);margin:0 16px 12px;border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
-.prefs-compact-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.prefs-compact-row:last-child{margin-bottom:0}
-.prefs-compact-label{font-size:13px;font-weight:600;color:var(--text-light);min-width:40px;flex-shrink:0}
-.prefs-compact-chips{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}
-.prefs-compact-chips::-webkit-scrollbar{display:none}
-.mini-chip{padding:5px 10px;border-radius:14px;background:var(--bg);border:1.5px solid transparent;font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer;transition:all 0.15s}
-.mini-chip.active{border-color:var(--primary);background:rgba(108,92,231,0.08);color:var(--primary)}
-.mini-chip:active{transform:scale(0.95)}
-
 </style>
 </head>
 <body>
@@ -706,7 +624,7 @@ body {
   </div>
   <div class="nav-city" id="navCity" onclick="fetchLocation()" title="点击重新定位">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    <span id="cityName">📡 定位中...</span>
+    <span id="cityName">定位中...</span>
   </div>
   <div class="nav-avatar" onclick="switchTab('profile')">清</div>
 </nav>
@@ -721,7 +639,8 @@ body {
       <div class="hero-title">这个周末<br>去哪里探索？</div>
       <div class="hero-subtitle">为你推荐最适合的周末活动</div>
       <div class="hero-weather">
-        <span id="weather-icon" style="font-size:18px">⏳</span> <span id="weather-text">获取天气中...</span>
+        <span id="weather-icon">⏳</span>
+        <span id="weather-text">获取天气中...</span>
       </div>
     </div>
 
@@ -765,21 +684,21 @@ body {
 
     <div class="section-header">
       <div class="section-title">🔥 本周热门</div>
-      <div class="section-more" onclick="switchTab('recommend')">查看更多 →</div>
+      <div class="section-more" onclick="switchTab('discover')">查看更多 →</div>
     </div>
-    <div class="card-scroll" id="hotCards"><div class="loading-recommendations"><div class="loading-spinner"></div><div class="loading-text">正在获取附近活动...</div></div></div>
+    <div class="card-scroll" id="hotCards"></div>
 
     <div class="section-header">
       <div class="section-title">🤖 AI 为你推荐</div>
       <div class="section-more" onclick="showToast('🔄 已刷新推荐')">换一批</div>
     </div>
-    <div class="card-scroll" id="aiCards"><div class="loading-recommendations"><div class="loading-spinner"></div><div class="loading-text">正在获取附近活动...</div></div></div>
+    <div class="card-scroll" id="aiCards"></div>
 
     <div class="section-header">
       <div class="section-title">🌧️ 雨天备选方案</div>
       <div class="section-more">室内精选</div>
     </div>
-    <div class="card-scroll" id="rainCards"><div class="loading-recommendations"><div class="loading-spinner"></div><div class="loading-text">正在获取附近活动...</div></div></div>
+    <div class="card-scroll" id="rainCards"></div>
   </div>
 
   <!-- ===== DISCOVER PAGE ===== -->
@@ -852,10 +771,10 @@ body {
       <div class="profile-name">探索新手</div>
       <div class="profile-bio">周末不想宅在家 🌟</div>
       <div class="profile-stats-row">
-        <div class="profile-stat"><div class="profile-stat-num" id="profileCheckinCount">0</div><div class="profile-stat-label">打卡</div></div>
-        <div class="profile-stat"><div class="profile-stat-num" id="profileBadgeCount">0</div><div class="profile-stat-label">徽章</div></div>
-        <div class="profile-stat"><div class="profile-stat-num" id="profileGuideCount">0</div><div class="profile-stat-label">攻略</div></div>
-        <div class="profile-stat"><div class="profile-stat-num" id="profileTeamCount">0</div><div class="profile-stat-label">队友</div></div>
+        <div class="profile-stat"><div class="profile-stat-num">12</div><div class="profile-stat-label">打卡</div></div>
+        <div class="profile-stat"><div class="profile-stat-num">5</div><div class="profile-stat-label">徽章</div></div>
+        <div class="profile-stat"><div class="profile-stat-num">3</div><div class="profile-stat-label">攻略</div></div>
+        <div class="profile-stat"><div class="profile-stat-num">8</div><div class="profile-stat-label">队友</div></div>
       </div>
     </div>
     <div class="profile-menu">
@@ -868,101 +787,32 @@ body {
       <div class="profile-menu-item" onclick="openHelp()"><span class="profile-menu-icon">❓</span><span class="profile-menu-text">帮助与反馈</span><span class="profile-menu-arrow">›</span></div>
     </div>
   </div>
-
-  <div class="page" id="page-recommend">
-    <div class="recommend-page">
-      <!-- Weather Hero -->
-      <div class="recommend-hero" style="margin:0">
-        <div class="recommend-hero-title">🎯 智能推荐</div>
-        <div class="recommend-hero-subtitle">天气 · 心情 · 预算，为你量身定制</div>
-        <div class="weather-card" id="weatherCard" style="margin-top:12px">
-          <span id="weatherEmoji">🌤️</span>
-          <span id="weatherTemp">--°C</span>
-          <span id="weatherLabel">定位中...</span>
-        </div>
-      </div>
-
-      <!-- Compact Prefs -->
-      <div class="prefs-compact">
-        <div class="prefs-compact-row">
-          <div class="prefs-compact-label">😌 心情</div>
-          <div class="prefs-compact-chips" id="moodChips">
-            <div class="mini-chip active" data-mood="relax" onclick="selectMood(this)">😌 放松</div>
-            <div class="mini-chip" data-mood="adventure" onclick="selectMood(this)">🎯 冒险</div>
-            <div class="mini-chip" data-mood="social" onclick="selectMood(this)">👥 社交</div>
-            <div class="mini-chip" data-mood="creative" onclick="selectMood(this)">🎨 创作</div>
-            <div class="mini-chip" data-mood="foodie" onclick="selectMood(this)">🍜 觅食</div>
-          </div>
-        </div>
-        <div class="prefs-compact-row">
-          <div class="prefs-compact-label">⚡ 能量</div>
-          <div class="prefs-compact-chips" id="energyChips">
-            <div class="mini-chip" data-energy="1" onclick="selectEnergy(this)">躺平</div>
-            <div class="mini-chip" data-energy="2" onclick="selectEnergy(this)">轻松</div>
-            <div class="mini-chip active" data-energy="3" onclick="selectEnergy(this)">正常</div>
-            <div class="mini-chip" data-energy="4" onclick="selectEnergy(this)">精力</div>
-            <div class="mini-chip" data-energy="5" onclick="selectEnergy(this)">满血</div>
-          </div>
-        </div>
-        <div class="prefs-compact-row">
-          <div class="prefs-compact-label">💰 预算</div>
-          <div class="prefs-compact-chips" id="budgetChips">
-            <div class="mini-chip active" data-budget="free" onclick="selectBudget(this)">🆓 免费</div>
-            <div class="mini-chip" data-budget="low" onclick="selectBudget(this)">💰 ≤50</div>
-            <div class="mini-chip" data-budget="medium" onclick="selectBudget(this)">💰💰 ≤150</div>
-            <div class="mini-chip" data-budget="high" onclick="selectBudget(this)">💎 150+</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Recommendations -->
-      <div class="recommendations-section" style="padding:0 16px">
-        <div class="recommendations-header">
-          <div class="recommendations-title">✨ 为你推荐</div>
-          <div class="recommendations-count" id="recommendCount">0个活动</div>
-        </div>
-        <div id="recommendationsList">
-          <div class="loading-recommendations"><div class="loading-spinner"></div><div class="loading-text">正在生成推荐...</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-  <!-- Task Modal -->
-  <div class="task-modal-overlay" id="taskModal">
-    <div class="task-modal">
-      <button class="task-modal-close" onclick="closeTaskModal()">&times;</button>
-      <div id="taskEmoji" style="font-size:56px;margin-bottom:16px">✨</div>
-      <div style="font-size:12px;color:var(--primary);font-weight:600;margin-bottom:8px">🎯 今日探索任务</div>
-      <div id="taskText" style="font-size:17px;font-weight:700;margin-bottom:6px">正在生成...</div>
-      <div id="taskDifficulty" style="margin-bottom:20px;font-size:13px;color:var(--text-light)">难度: --</div>
-      <div style="display:flex;gap:10px">
-        <button class="task-btn task-btn-secondary" onclick="closeTaskModal()" style="flex:1">稍后再看</button>
-        <button class="task-btn task-btn-primary" onclick="startExploration();closeTaskModal()" style="flex:1">开始探索</button>
-      </div>
-      <button style="margin-top:12px;background:none;border:none;color:var(--text-muted);font-size:13px;cursor:pointer" onclick="refreshTask()">🔄 换一个任务</button>
-    </div>
-  </div>
-
+<!-- Bottom Navigation -->
 <nav class="bottom-nav">
   <div class="tab-item active" onclick="switchTab('home')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span>首页</span>
   </div>
-  <div class="tab-item" onclick="switchTab('recommend')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-    <span>推荐</span>
+  <div class="tab-item" onclick="switchTab('discover')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+    <span>发现</span>
   </div>
   <div class="tab-item" onclick="switchTab('team')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     <span>组队</span>
+  </div>
+  <div class="tab-item" onclick="switchTab('checkin')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span>打卡</span>
   </div>
   <div class="tab-item" onclick="switchTab('profile')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     <span>我的</span>
   </div>
 </nav>
+
 <!-- Filter Modal -->
 <div class="modal-overlay" id="filterModal">
   <div class="modal-content">
@@ -998,16 +848,6 @@ body {
         <div class="filter-opt" onclick="toggleFilterOpt(this)">☀️ 晴天推荐</div>
         <div class="filter-opt" onclick="toggleFilterOpt(this)">🌧️ 雨天可用</div>
         <div class="filter-opt" onclick="toggleFilterOpt(this)">❄️ 冬季友好</div>
-      </div>
-    </div>
-    <div class="filter-group">
-      <div class="filter-group-title">📍 距离</div>
-      <div class="filter-options">
-        <div class="filter-opt selected" onclick="toggleFilterOpt(this)">不限</div>
-        <div class="filter-opt" onclick="toggleFilterOpt(this)">1km以内</div>
-        <div class="filter-opt" onclick="toggleFilterOpt(this)">3km以内</div>
-        <div class="filter-opt" onclick="toggleFilterOpt(this)">5km以内</div>
-        <div class="filter-opt" onclick="toggleFilterOpt(this)">10km以内</div>
       </div>
     </div>
     <div class="filter-group">
@@ -1212,26 +1052,19 @@ body {
 <div class="toast" id="toast"></div>
 
 <script>
-console.log("[v3.0] Script loaded at", new Date().toISOString());
 // ===== DATA =====
 let ACTIVITIES = [];
 
-async function fetchActivitiesFromAPI(lat, lon) {
+async function fetchActivitiesFromAPI() {
   try {
-    if (!lat || !lon) { ACTIVITIES = []; return; }
-    var resp = await fetch('/api/nearby?lat=' + lat + '&lon=' + lon + '&radius=5000');
+    var resp = await fetch('/api/activities');
     var data = await resp.json();
-    ACTIVITIES = (data.activities || []).map(function(a, i){
-      return { id: a.id || (10000 + i), title: a.title, category: a.category || '探索',
-        emoji: a.emoji || '📍', color: a.color || '#636E72',
-        price: a.price || 0, indoor: a.indoor !== undefined ? a.indoor : true,
-        weather: a.weather || 'any', location: a.location || '',
-        date: a.date || '', desc: a.desc || '',
-        people: a.people || 0, tags: a.tags || [],
-        gradient: a.gradient || 'linear-gradient(135deg,#6C5CE7,#A29BFE)',
-        distance: a.distance || null, lat: a.lat || null, lon: a.lon || null };
+    ACTIVITIES = (data.activities || []).map(function(a){
+      return { id:a.id, title:a.title, category:a.category, emoji:a.emoji, color:a.color,
+        price:a.price, indoor:a.indoor, weather:a.weather, location:a.location, date:a.date,
+        desc:a.desc, people:a.people, tags:a.tags, gradient:a.gradient };
     });
-  } catch(e) { console.warn('fetchActivities failed:', e); ACTIVITIES = []; }
+  } catch(e) { console.warn('fetchActivities failed:', e); }
 }
 
 
@@ -1350,22 +1183,9 @@ function savePrefs() {
 
 function updateProfileDisplay() {
   var nameEl = document.querySelector('.profile-name');
-  if (nameEl) nameEl.textContent = (userPrefs.city || '本地') + '探索者';
+  if (nameEl) nameEl.textContent = userPrefs.city + '探索者';
   var bioEl = document.querySelector('.profile-bio');
-  if (bioEl) bioEl.textContent = '周末不想宅在家 · ' + (userPrefs.budget || '不限') + '预算 🌟';
-  updateProfileStats();
-}
-
-function updateProfileStats() {
-  var checkins = checkinData.length;
-  var badges = getBadges().filter(function(b){return b.unlocked}).length;
-  var guides = userGuides.length;
-  var teams = joinedTeamIds.length + userCreatedTeams.filter(function(t){return t.isCreatedByMe}).length;
-  var el = function(id){ return document.getElementById(id); };
-  if (el('profileCheckinCount')) el('profileCheckinCount').textContent = checkins;
-  if (el('profileBadgeCount')) el('profileBadgeCount').textContent = badges;
-  if (el('profileGuideCount')) el('profileGuideCount').textContent = guides;
-  if (el('profileTeamCount')) el('profileTeamCount').textContent = teams;
+  if (bioEl) bioEl.textContent = '周末不想宅在家 · ' + userPrefs.budget + '预算 🌟';
 }
 
 function selectGuideCat(el, emoji) {
@@ -1400,8 +1220,8 @@ async function submitGuide() {
 }
 
 function updateProfileGuideCount() {
-  var el = document.getElementById('profileGuideCount');
-  if (el) el.textContent = userGuides.length;
+  var el = document.querySelectorAll('.profile-stat-num');
+  if (el[2]) el[2].textContent = userGuides.length;
 }
 
 
@@ -1470,7 +1290,7 @@ function openNotifs() {
     ? {icon:'👥', title:'新队伍等你加入', desc:allTeams[0].creator+'发起了「'+allTeams[0].activity+'」', time:'最近'}
     : {icon:'👥', title:'暂无队伍', desc:'快来创建第一个队伍吧', time:''};
   var actNotif = ACTIVITIES.length > 0
-    ? {icon:'🔥', title:'附近活动推荐', desc:ACTIVITIES.slice(0,2).map(function(a){return a.title}).join('、')+'等你探索', time:'刚刚'}
+    ? {icon:'🔥', title:'热门活动推荐', desc:ACTIVITIES.slice(0,2).map(function(a){return a.title}).join('、')+'等你探索', time:'刚刚'}
     : {icon:'🔥', title:'暂无活动', desc:'期待更多精彩活动', time:''};
   var notifications = [cityNotif, weatherNotif, teamNotif, actNotif];
   var html = notifications.map(function(n){
@@ -1532,10 +1352,7 @@ async function fetchWeather(lat, lon) {
   try {
     var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon +
       '&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto&forecast_days=3';
-    var controller = new AbortController();
-    var timeoutId = setTimeout(function(){ controller.abort(); }, 8000);
-    var resp = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeoutId);
+    var resp = await fetch(url);
     var data = await resp.json();
     var cw = data.current_weather;
     var code = cw.weathercode;
@@ -1547,13 +1364,8 @@ async function fetchWeather(lat, lon) {
     window.__weatherCode = code;
     window.__temperature = temp;
     window.__isOutdoor = isOutdoorFriendly(code, temp);
-    // Re-fetch activities with actual location for dynamic recommendations
-    fetchActivitiesFromAPI(currentLat, currentLon).then(function(){
-      renderHotCards();
-      renderAiCards();
-      renderRainCards();
-      renderActivityList();
-    });
+    renderAiCards();
+    renderRainCards();
   } catch (e) {
     console.warn('Weather fetch failed:', e);
     document.getElementById('weather-icon').textContent = '🌤️';
@@ -1630,9 +1442,7 @@ function init() {
   updateGreeting();
   fetchLocation();
   updateCheckinStats();
-  // Initial fetch (without location, uses DB fallback)
-  // Will be re-fetched with location once weather/position is available
-  fetchActivitiesFromAPI(currentLat, currentLon).then(function(){
+  fetchActivitiesFromAPI().then(function(){
     renderHotCards();
     renderAiCards();
     renderRainCards();
@@ -1655,12 +1465,11 @@ function updateGreeting() {
 
 // ===== RENDER FUNCTIONS =====
 function renderCard(a) {
-  var distStr = a.distance !== null && a.distance !== undefined ? (a.distance < 1 ? Math.round(a.distance*1000)+'m' : a.distance.toFixed(1)+'km') : '';
   return '<div class="activity-card" onclick="showActivityDetail('+a.id+')">' +
     '<div class="card-img" style="background:'+a.gradient+'">' +
       '<span style="font-size:48px">'+a.emoji+'</span>' +
       '<span class="card-badge">'+a.category+'</span>' +
-      (distStr ? '<span class="card-weather-badge">📍 '+distStr+'</span>' : (a.indoor ? '<span class="card-weather-badge">🏠 室内</span>' : '<span class="card-weather-badge">🌳 户外</span>')) +
+      (a.indoor ? '<span class="card-weather-badge">🏠 室内</span>' : '<span class="card-weather-badge">🌳 户外</span>') +
     '</div>' +
     '<div class="card-body">' +
       '<div class="card-title">'+a.title+'</div>' +
@@ -1703,14 +1512,12 @@ function scoreActivity(a) {
 }
 
 function renderHotCards() {
-  if (ACTIVITIES.length === 0) { document.getElementById('hotCards').innerHTML = '<div class="loading-recommendations"><div class="loading-spinner"></div><div class="loading-text">正在获取附近活动...</div></div>'; return; }
   var scored = ACTIVITIES.map(function(a){ return {a:a, s:scoreActivity(a)}; });
   scored.sort(function(x,y){ return y.s - x.s; });
   document.getElementById('hotCards').innerHTML = scored.slice(0,6).map(function(x){ return renderCard(x.a); }).join('');
 }
 
 function renderAiCards() {
-  if (ACTIVITIES.length === 0) { document.getElementById('aiCards').innerHTML = '<div class="loading-recommendations"><div class="loading-spinner"></div><div class="loading-text">正在获取附近活动...</div></div>'; return; }
   var scored = ACTIVITIES.map(function(a){ return {a:a, s:scoreActivity(a)}; });
   scored.sort(function(x,y){ return y.s - x.s; });
   document.getElementById('aiCards').innerHTML = scored.slice(0,4).map(function(x){ return renderCard(x.a); }).join('');
@@ -1750,7 +1557,6 @@ function renderActivityList(filter) {
     return;
   }
   document.getElementById('activityList').innerHTML = list.map(function(a){
-    var distStr = a.distance !== null && a.distance !== undefined ? (a.distance < 1 ? Math.round(a.distance*1000)+'m' : a.distance.toFixed(1)+'km') : '';
     return '<div class="activity-list-item" onclick="showActivityDetail('+a.id+')">' +
       '<div class="list-item-img" style="background:'+a.gradient+'">'+a.emoji+'</div>' +
       '<div class="list-item-body">' +
@@ -1758,7 +1564,6 @@ function renderActivityList(filter) {
         '<div class="list-item-desc">'+a.desc+'</div>' +
         '<div class="list-item-footer">' +
           '<span class="list-item-price">'+(a.price===0?'免费':'¥'+a.price)+'</span>' +
-          (distStr ? '<span class="list-item-people">📍 '+distStr+'</span>' : '') +
           '<span class="list-item-people"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>'+a.people+'人感兴趣</span>' +
         '</div>' +
       '</div>' +
@@ -1903,12 +1708,10 @@ function renderGuides(tab) {
 function switchTab(tab) {
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
   document.querySelectorAll('.tab-item').forEach(function(t){t.classList.remove('active')});
-  document.getElementById("page-"+tab).classList.add("active");
-  document.documentElement.scrollTop=0;document.body.scrollTop=0;window.scrollTo(0,0);
+  document.getElementById('page-'+tab).classList.add('active');
   var tabs = document.querySelectorAll('.tab-item');
-  var idx = {home:0,recommend:1,team:2,profile:3,discover:0,checkin:3,guide:-1}[tab];
+  var idx = {home:0,discover:1,team:2,checkin:3,profile:4,guide:-1}[tab];
   if (idx >= 0 && tabs[idx]) tabs[idx].classList.add('active');
-  if (tab === 'recommend') { initRecommendation(); }
   // Show/hide guide publish button based on active tab
   var pubBtn = document.getElementById('guidePublishBtn');
   if (pubBtn) {
@@ -1958,63 +1761,8 @@ function openFilterModal() {
 
 function applyFilter() {
   document.getElementById('filterModal').classList.remove('show');
-  var filterGroups = document.querySelectorAll('#filterModal .filter-options');
-  function getSelected(groupIdx, defaultVal) {
-    var els = filterGroups[groupIdx].querySelectorAll('.filter-opt');
-    var selected = defaultVal;
-    els.forEach(function(el){
-      if (el.classList.contains('selected')) {
-        var txt = el.textContent.trim();
-        if (txt !== '全部' && txt !== '不限') selected = txt;
-      }
-    });
-    return selected;
-  }
-  var selectedCat = getSelected(0, 'all');
-  var selectedPrice = getSelected(1, 'all');
-  var selectedWeather = getSelected(2, 'all');
-  var selectedPeople = getSelected(3, 'all');
-  var selectedDist = getSelected(4, 'all');
-
-  var list = ACTIVITIES;
-  if (selectedCat !== 'all') {
-    list = list.filter(function(a){ return a.category === selectedCat || (a.tags && a.tags.indexOf(selectedCat) >= 0); });
-  }
-  if (selectedPrice !== 'all') {
-    var maxPrice = parseInt(selectedPrice) || 0;
-    list = list.filter(function(a){ return a.price <= maxPrice; });
-  }
-  if (selectedWeather === '☀️ 晴天推荐') {
-    list = list.filter(function(a){ return !a.indoor; });
-  } else if (selectedWeather === '🌧️ 雨天可用') {
-    list = list.filter(function(a){ return a.indoor; });
-  }
-  if (selectedDist !== 'all') {
-    var maxDist = parseInt(selectedDist) || 999;
-    list = list.filter(function(a){ return a.distance !== null && a.distance <= maxDist; });
-    list.sort(function(a,b){ return (a.distance||999) - (b.distance||999); });
-  }
-  var renderOne = function(a){
-    var distStr = a.distance !== null ? (a.distance < 1 ? Math.round(a.distance*1000)+'m' : a.distance.toFixed(1)+'km') : '';
-    return '<div class="activity-list-item" onclick="showActivityDetail('+a.id+')">' +
-      '<div class="list-item-img" style="background:'+a.gradient+'">'+a.emoji+'</div>' +
-      '<div class="list-item-body">' +
-        '<div class="list-item-title">'+a.title+'</div>' +
-        '<div class="list-item-desc">'+a.desc+'</div>' +
-        '<div class="list-item-footer">' +
-          '<span class="list-item-price">'+(a.price===0?'免费':'¥'+a.price)+'</span>' +
-          (distStr ? '<span class="list-item-people">📍 '+distStr+'</span>' : '') +
-          '<span class="list-item-people">'+a.people+'人感兴趣</span>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
-  };
-  if (list.length === 0) {
-    document.getElementById('activityList').innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-text">暂无匹配的活动</div></div>';
-  } else {
-    document.getElementById('activityList').innerHTML = list.map(renderOne).join('');
-  }
   showToast('✅ 筛选已应用');
+  renderActivityList('all');
 }
 
 function openCheckinModal() {
@@ -2113,8 +1861,8 @@ async function joinTeam(btn, id) {
 
 function updateProfileTeamCount() {
   var totalTeams = joinedTeamIds.length + userCreatedTeams.filter(function(t){return t.isCreatedByMe}).length;
-  var el = document.getElementById('profileTeamCount');
-  if (el) el.textContent = totalTeams;
+  var el = document.querySelectorAll('.profile-stat-num');
+  if (el[3]) el[3].textContent = totalTeams;
 }
 
 function showActivityDetail(id) {
@@ -2153,7 +1901,7 @@ function showActivityDetail(id) {
 }
 
 function filterByCategory(cat) {
-  switchTab('recommend');
+  switchTab('discover');
   var chips = document.querySelectorAll('.filter-chip');
   chips.forEach(function(c){
     c.classList.remove('active');
@@ -2201,114 +1949,7 @@ document.querySelectorAll('.modal-overlay').forEach(function(m){
 });
 
 // Init
-console.log("[v3.0] About to init, ACTIVITIES count:", ACTIVITIES.length);
 init(); updateProfileDisplay();
-
-
-// ===== RECOMMENDATION ENGINE =====
-var _recState = {mood:'relax',energy:3,budget:'free'};
-var _recLat=39.9042, _recLon=116.4074, _recReady=false;
-
-function initRecommendation(){
-  _recReady = false;
-  document.getElementById('weatherLabel').textContent = '定位中...';
-  document.getElementById('weatherEmoji').textContent = '📡';
-  // Try geolocation with timeout
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(
-      function(p){_recLat=p.coords.latitude;_recLon=p.coords.longitude;_recReady=true;_loadRec()},
-      function(err){console.warn('Geo error:',err.code,err.message);_recReady=true;_loadRec()},
-      {enableHighAccuracy:false,timeout:8000,maximumAge:300000}
-    );
-  } else {
-    _recReady=true;_loadRec();
-  }
-  // Show task modal on first visit
-  if(!localStorage.getItem('taskShown')){
-    setTimeout(function(){_loadTask()},1500);
-    localStorage.setItem('taskShown','1');
-  }
-}
-
-async function _loadRec(){
-  try{
-    var u='/api/recommendations?lat='+_recLat+'&lon='+_recLon+'&mood='+_recState.mood+'&energy='+_recState.energy+'&budget='+_recState.budget;
-    var r=await fetch(u); var d=await r.json();
-    if(d.error){_showRecEmpty(d.error);return;}
-    _updWeather(d.weather);
-    _recState._task=d.explorationTask;
-    _renderRec(d.recommendations||[]);
-  }catch(e){console.error(e);_showRecEmpty('加载失败，请重试');}
-}
-
-function _updWeather(w){
-  if(!w)return;
-  document.getElementById('weatherEmoji').textContent=w.emoji||'🌤️';
-  document.getElementById('weatherTemp').textContent=(w.temp||'--')+'°C';
-  document.getElementById('weatherLabel').textContent=w.label||'未知';
-}
-
-function _renderRec(list){
-  var c=document.getElementById('recommendationsList'),n=document.getElementById('recommendCount');
-  if(!list||!list.length){_showRecEmpty('暂无匹配的活动，试试调整偏好');n.textContent='0个活动';return;}
-  n.textContent=list.length+'个活动';
-  c.innerHTML=list.map(function(a){
-    var g=a.gradient||'linear-gradient(135deg,#6C5CE7,#A29BFE)';
-    var p=a.price===0?'免费':'¥'+a.price;
-    var r=a.recommendationReason||'综合推荐';
-    return '<div class="recommend-card" onclick="showActivityDetail('+a.id+')">'+
-      '<div class="recommend-emoji" style="background:'+g+'">'+a.emoji+'</div>'+
-      '<div class="recommend-info">'+
-        '<div class="recommend-title">'+a.title+'</div>'+
-        '<div class="recommend-meta"><span>'+a.category+'</span><span>·</span><span>'+p+'</span><span>·</span><span>'+(a.indoor?'室内':'户外')+'</span></div>'+
-        '<div class="recommend-reason">💡 '+r+'</div>'+
-      '</div>'+
-      '<div class="recommend-score"><span>匹配</span><span>'+Math.min(100,Math.round(a.score))+'%</span></div>'+
-    '</div>';
-  }).join('');
-}
-
-function _showRecEmpty(msg){
-  document.getElementById('recommendationsList').innerHTML=
-    '<div class="empty-recommendations"><div class="empty-emoji">🔍</div><div class="empty-text">暂无推荐</div><div class="empty-subtext">'+msg+'</div></div>';
-  document.getElementById('recommendCount').textContent='0个活动';
-}
-
-// Compact pref selectors
-function selectMood(el){
-  document.querySelectorAll('#moodChips .mini-chip').forEach(function(c){c.classList.remove('active')});
-  el.classList.add('active');_recState.mood=el.dataset.mood;_refreshRec();
-}
-function selectEnergy(el){
-  document.querySelectorAll('#energyChips .mini-chip').forEach(function(c){c.classList.remove('active')});
-  el.classList.add('active');_recState.energy=parseInt(el.dataset.energy);_refreshRec();
-}
-function selectBudget(el){
-  document.querySelectorAll('#budgetChips .mini-chip').forEach(function(c){c.classList.remove('active')});
-  el.classList.add('active');_recState.budget=el.dataset.budget;_refreshRec();
-}
-function _refreshRec(){_loadRec();}
-
-// Task modal
-async function _loadTask(){
-  try{
-    var u='/api/exploration-task?lat='+_recLat+'&lon='+_recLon+'&mood='+_recState.mood+'&energy='+_recState.energy;
-    var r=await fetch(u);var d=await r.json();
-    if(d.task)_showTaskModal(d.task);
-  }catch(e){console.error(e);}
-}
-function _showTaskModal(t){
-  document.getElementById('taskEmoji').textContent=t.emoji||'✨';
-  document.getElementById('taskText').textContent=t.task||'探索新地方';
-  document.getElementById('taskDifficulty').textContent='难度: '+'⭐'.repeat(t.difficulty||1);
-  document.getElementById('taskModal').classList.add('show');
-}
-function closeTaskModal(){document.getElementById('taskModal').classList.remove('show');}
-async function refreshTask(){await _loadTask();}
-function startExploration(){
-  var txt=document.getElementById('taskText').textContent;
-  if(txt)showToast('🎯 任务已开始: '+txt);
-}
 </script>
 </body>
 </html>`;
@@ -2327,6 +1968,3 @@ export default {
     });
   },
 };
-
-
-

@@ -7,3 +7,8 @@ routes = [
   { pattern = "meituanvibe.tech/*", zone_name = "meituanvibe.tech" },
   { pattern = "www.meituanvibe.tech/*", zone_name = "meituanvibe.tech" }
 ]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "weekend-explorer"
+database_id = "444808f2-13ce-4932-bb9d-e7402f25d83f"
