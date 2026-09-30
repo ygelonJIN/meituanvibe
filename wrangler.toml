@@ -1,0 +1,8 @@
+name = "meituanvibe"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+routes = [
+  { pattern = "meituanvibe.tech/*", zone_name = "meituanvibe.tech" },
+  { pattern = "www.meituanvibe.tech/*", zone_name = "meituanvibe.tech" }
+]
